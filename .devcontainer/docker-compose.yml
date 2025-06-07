@@ -1,0 +1,13 @@
+services:
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm
+    container_name: angular_devcontainer
+    ports:
+      - "4200:4200"
+      - "49152:49152"
+    volumes:
+      - ..:/workspace:cached
+    command: >
+      sh -c "sleep infinity &&
+            cd /workspace &&
+            npm ci"
