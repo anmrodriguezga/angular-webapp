@@ -23,7 +23,7 @@ jobs:
           submodules: true
           lfs: false
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '22.x' 
       - name: Install OIDC Client from Core Package
