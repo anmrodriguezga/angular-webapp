@@ -9,11 +9,12 @@ import { Component, signal } from '@angular/core';
 })
 export class Labs {
   welcome = 'Hola';
-  tasks = [
+  tasks = signal([
     'Instalar el Angular CLI',
     'Crear un nuevo proyecto',
-    'Crear un componente'
-  ];
+    'Crear un componente',
+    'Crear un servicio'
+  ]);
   name = signal('Angie');
   age = 27;
   disabled = false;
