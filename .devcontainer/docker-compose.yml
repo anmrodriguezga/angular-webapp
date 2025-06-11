@@ -8,6 +8,9 @@ services:
     volumes:
       - ..:/workspace:cached
     command: >
-      sh -c "sleep infinity &&
-            cd /workspace &&
-            npm ci"
+      sh -c "npm set strict-ssl false &&
+            npm i @angular/cli -g &&
+            cd /workspace/todoapp &&
+            npm ci &&
+            npm set strict-ssl true;
+            sleep infinity"
