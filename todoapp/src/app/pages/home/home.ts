@@ -14,4 +14,21 @@ export class Home {
     'Crear un componente',
     'Crear un servicio'
   ]);
+
+  changeHandler(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newTask = input.value;
+    this.tasks.update(tasks => {
+      if (newTask.trim() === '') {
+        return tasks; // No change if input is empty
+      }
+      return [...tasks, newTask]; 
+    });
+  }
+
+  deleteTask(index: number) {
+    this.tasks.update(tasks => {
+      return tasks.filter((_, i) => i !== index); 
+    });
+  }
 }
