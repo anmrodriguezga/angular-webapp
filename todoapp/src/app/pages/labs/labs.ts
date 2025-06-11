@@ -16,4 +16,12 @@ export class Labs {
   ];
   name = 'Andres';
   age = 27;
+  disabled = false;
+  img = 'https://angular.io/assets/images/logos/angular/angular.png';
+
+  person = {
+    name: 'Andres',
+    age: 27,
+    avatar: 'https://www.w3schools.com/howto/img_avatar.png'
+  }
 }
