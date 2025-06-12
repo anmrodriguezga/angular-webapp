@@ -19,7 +19,7 @@ export class Home {
     {
       id: Date.now(),
       title: 'Instalar el Angular CLI',
-      completed: false
+      completed: true
     },
     {
       id: Date.now(),
@@ -29,7 +29,7 @@ export class Home {
     {
       id: Date.now(),
       title: 'Crear un componente',
-      completed: false
+      completed: true
     },
     {
       id: Date.now(),
@@ -51,12 +51,19 @@ export class Home {
       completed: false
     };
 
-    this.tasks.update(tasks => [...tasks, newTask]);
+    this.tasks.update((tasks) => [...tasks, newTask]);
   }
 
   deleteTask(index: number) {
-    this.tasks.update(tasks => {
+    this.tasks.update((tasks) => {
       return tasks.filter((_, i) => i !== index); 
+    });
+  }
+
+  updateTask(index: number) {
+    this.tasks.update((tasks) => {
+      const task = tasks[index];
+      return tasks.map((t, i) => i === index ? { ...t, completed: !task.completed } : t);
     });
   }
 }
