@@ -69,19 +69,19 @@
 
     <input type="text" [value]="person().name" (change)="changeName($event)">
     @switch (person().name) {
-        @case ('Andres') {
-        <p>
-            Soy Andres
-        </p>
-        } @case ('Juan') {
-        <p>
-            Soy Juan
-        </p>
-        } @default {
-        <p>
-            Soy otro
-        </p>
-        }
+    @case ('Andres') {
+    <p>
+        Soy Andres
+    </p>
+    } @case ('Juan') {
+    <p>
+        Soy Juan
+    </p>
+    } @default {
+    <p>
+        Soy otro
+    </p>
+    }
     }
 
     <hr />
@@ -98,5 +98,14 @@
 
     <input type="number" [formControl]="widthCtl" />
     <span class="box" [style.width.px]="widthCtl.value"></span>
+
+    <hr />
+    <p>
+        <input type="text" [formControl]="nameCtl" /> <br />
+        <span class="message-error" [class.show]="nameCtl.invalid && nameCtl.touched">Nombre invalido</span>
+    </p>
+    <p>
+        <input type="text">
+    </p>
 
 </div>
