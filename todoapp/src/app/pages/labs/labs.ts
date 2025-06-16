@@ -27,6 +27,9 @@ export class Labs {
   });
 
   colorCtl = new FormControl();
+  widthCtl = new FormControl(50, {
+    nonNullable: true
+  });
 
   constructor() {
     this.colorCtl.valueChanges.subscribe((value) => {

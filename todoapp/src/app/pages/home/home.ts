@@ -42,15 +42,18 @@ export class Home {
   newTaskCtrl = new FormControl('', {
     nonNullable: true,
     validators: [
-      Validators.required
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9\s]+$/),
     ]
   });
 
   changeHandler() {
     if (this.newTaskCtrl.valid) {
-      const value = this.newTaskCtrl.value;
-      this.addTask(value);
-      this.newTaskCtrl.reset();
+      const value = this.newTaskCtrl.value.trim();
+      if (value.length !== 0) {
+        this.addTask(value);
+        this.newTaskCtrl.reset();
+      }
     }
   }
 
@@ -66,7 +69,7 @@ export class Home {
 
   deleteTask(index: number) {
     this.tasks.update((tasks) => {
-      return tasks.filter((_, i) => i !== index); 
+      return tasks.filter((_, i) => i !== index);
     });
   }
 

@@ -9,11 +9,6 @@
     </header>
     <div class="container todoapp-wrapper">
         <!-- This section should be hidden by default and shown when there are todos -->
-        <pre>
-            <code>
-                {{ tasks() | json }}
-            </code>
-         </pre>
         <section class="main">
             <ul class="todo-list">
                 @for (task of tasks(); track $index; let i = $index) {
