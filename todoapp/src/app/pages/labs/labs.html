@@ -56,13 +56,32 @@
     </div>
     <input type="number" [value]="person().age" (change)="changeAge($event)">
     @if (person().name === 'Andres' && person().age > 18) {
-        <div>
-            Soy Andres y soy mayor de edad
-        </div>
+    <div>
+        Soy Andres y soy mayor de edad
+    </div>
     } @else {
-        <div>
-            Soy Andres y soy menor de edad
-        </div>
+    <div>
+        Soy Andres y soy menor de edad
+    </div>
+    }
+
+    <hr />
+
+    <input type="text" [value]="person().name" (change)="changeName($event)">
+    @switch (person().name) {
+    @case ('Andres') {
+    <p>
+        Soy Andres
+    </p>
+    } @case ('Juan') {
+    <p>
+        Soy Juan
+    </p>
+    } @default {
+    <p>
+        Soy otro
+    </p>
+    }
     }
 
 </div>
