@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, inject, Injector, signal } from '@angular/core';
 
 import { Task } from '../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,33 +11,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './home.css'
 })
 export class Home {
-  tasks = signal<Task[]>([
-    {
-      id: Date.now(),
-      title: 'Crear proyecto',
-      completed: false
-    },
-    {
-      id: Date.now(),
-      title: 'Instalar el Angular CLI',
-      completed: true
-    },
-    {
-      id: Date.now(),
-      title: 'Crear un nuevo proyecto',
-      completed: false
-    },
-    {
-      id: Date.now(),
-      title: 'Crear un componente',
-      completed: true
-    },
-    {
-      id: Date.now(),
-      title: 'Crear un servicio',
-      completed: false
-    }
-  ]);
+  tasks = signal<Task[]>([]);
 
   filter = signal<'all' | 'pending' | 'completed'>('all');
   tasksByFilter = computed(() => {
@@ -59,6 +33,23 @@ export class Home {
       Validators.pattern(/^[a-zA-Z0-9\s]+$/),
     ]
   });
+  
+  Injector = inject(Injector);
+
+  ngOnInit() {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      this.tasks.set(JSON.parse(storedTasks));
+    }
+    this.trackTasks();
+  }
+
+  trackTasks() {
+    effect(() => {
+      const tasks = this.tasks();
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }, { injector: this.Injector });
+  }
 
   changeHandler() {
     if (this.newTaskCtrl.valid) {
