@@ -69,19 +69,25 @@
 
     <input type="text" [value]="person().name" (change)="changeName($event)">
     @switch (person().name) {
-    @case ('Andres') {
-    <p>
-        Soy Andres
-    </p>
-    } @case ('Juan') {
-    <p>
-        Soy Juan
-    </p>
-    } @default {
-    <p>
-        Soy otro
-    </p>
+        @case ('Andres') {
+        <p>
+            Soy Andres
+        </p>
+        } @case ('Juan') {
+        <p>
+            Soy Juan
+        </p>
+        } @default {
+        <p>
+            Soy otro
+        </p>
+        }
     }
-    }
+
+    <hr />
+
+    <h1>Formularios</h1>
+    <input type="color" [formControl]="colorCtl" />
+    <p>Color: {{ colorCtl.value }}</p>
 
 </div>

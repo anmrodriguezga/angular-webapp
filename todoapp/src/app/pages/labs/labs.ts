@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-labs',
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './labs.html',
   styleUrl: './labs.css'
 })
@@ -23,7 +24,15 @@ export class Labs {
     name: 'Andres',
     age: 27,
     avatar: 'https://www.w3schools.com/howto/img_avatar.png'
-  })
+  });
+
+  colorCtl = new FormControl();
+
+  constructor() {
+    this.colorCtl.valueChanges.subscribe((value) => {
+      console.log('Color changed: ', value);
+    });
+  }
 
   clickHandler() {
     alert('Hola desde el clickHandler');
