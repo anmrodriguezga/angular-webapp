@@ -79,4 +79,17 @@ export class Home {
       return tasks.map((t, i) => i === index ? { ...t, completed: !task.completed } : t);
     });
   }
+
+  updateTaskEditingMode(index: number) {
+    this.tasks.update((tasks) => {
+      return tasks.map((t, i) => i === index ? { ...t, editing: true } : { ...t, editing: false });
+    });
+  }
+
+  updateTaskText(index: number, event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.tasks.update((tasks) => {
+      return tasks.map((t, i) => i === index ? { ...t, title: input.value, editing: false } : t);
+    });
+  }
 }

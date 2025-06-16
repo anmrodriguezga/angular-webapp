@@ -12,13 +12,16 @@
         <section class="main">
             <ul class="todo-list">
                 @for (task of tasks(); track $index; let i = $index) {
-                <li>
+                <li 
+                    (dblclick)="updateTaskEditingMode(i)" 
+                    [class.editing]="task.editing"
+                    [class.completed]="task.completed">
                     <div class="view">
                         <input class="toggle" type="checkbox" [checked]="task.completed" (change)="updateTask(i)" />
                         <label>{{ task.title }}</label>
                         <button class="destroy" (click)="deleteTask(i)"></button>
                     </div>
-                    <input class="edit" value="Buy a unicorn" />
+                    <input class="edit" (keydown.enter)="updateTaskText(i, $event)" [value]="task.title" />
                 </li>
                 } @empty {
                 <div class="view">
