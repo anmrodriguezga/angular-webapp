@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 import { Task } from '../../models/task.model';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -38,6 +38,19 @@ export class Home {
       completed: false
     }
   ]);
+
+  filter = signal<'all' | 'pending' | 'completed'>('all');
+  tasksByFilter = computed(() => {
+    const currentFilter = this.filter();
+    const tasks = this.tasks();
+    if (currentFilter === 'pending') {
+      return tasks.filter(task => !task.completed);
+    }
+    if (currentFilter === 'completed') {
+      return tasks.filter(task => task.completed);
+    }
+    return tasks;
+  });
 
   newTaskCtrl = new FormControl('', {
     nonNullable: true,
@@ -91,5 +104,9 @@ export class Home {
     this.tasks.update((tasks) => {
       return tasks.map((t, i) => i === index ? { ...t, title: input.value, editing: false } : t);
     });
+  }
+
+  changeFilter(filter: 'all' | 'pending' | 'completed') {
+    this.filter.set(filter);
   }
 }
