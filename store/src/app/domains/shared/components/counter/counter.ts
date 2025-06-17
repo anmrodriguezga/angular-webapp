@@ -21,6 +21,12 @@ export class Counter {
     // Before and during render
     console.log('ngOnChanges: ', changes);
     console.log('-'.repeat(10));
+
+    const duration = changes['duration'];
+    if (duration && duration.currentValue !== duration.previousValue) {
+      this.doSomething();
+    }
+    console.log('-'.repeat(10));
   }
 
   ngOnInit() {
@@ -43,6 +49,10 @@ export class Counter {
     // Before destroy
     console.log('ngOnDestroy');
     console.log('-'.repeat(10));
+  }
+
+  doSomething() {
+    console.log('change duration');
   }
 
 }
