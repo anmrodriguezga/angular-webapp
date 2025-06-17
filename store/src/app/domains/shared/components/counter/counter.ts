@@ -12,7 +12,7 @@ export class Counter {
 
   constructor() {
     // NO ASYNC CODE HERE
-    // Before render
+    // Before render, only once
     console.log('constructor');
     console.log('-'.repeat(10));
   }
@@ -20,6 +20,28 @@ export class Counter {
   ngOnChanges(changes: SimpleChanges) {
     // Before and during render
     console.log('ngOnChanges: ', changes);
+    console.log('-'.repeat(10));
+  }
+
+  ngOnInit() {
+    // After render, only once
+    // Allows async code (async, then, subscribe, etc.)
+    console.log('ngOnInit');
+    console.log('duration: ', this.duration);
+    console.log('message: ', this.message);
+    console.log('-'.repeat(10));
+  }
+
+  ngAfterViewInit() {
+    // After ngOnInit, only once
+    // Asks if children are rendered
+    console.log('ngAfterViewInit');
+    console.log('-'.repeat(10));
+  }
+
+  ngOnDestroy() {
+    // Before destroy
+    console.log('ngOnDestroy');
     console.log('-'.repeat(10));
   }
 
