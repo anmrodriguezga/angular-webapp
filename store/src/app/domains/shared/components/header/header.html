@@ -18,8 +18,9 @@
             </ul>
         </div>
         <div class="flex items-center">
-            <button class="p-2 relative" (click)="toggleSidebar()">
-                <div class="absolute -top-2 -right-2 rounded h-5 w-5 bg-red-700 text-white text-xs">{{ cart.length }}</div>
+            <button class="p-2 relative button-pointer" (click)="toggleSidebar()">
+                <div class="absolute -top-2 -right-2 rounded h-5 w-5 bg-red-700 text-white text-xs">{{ cart.length }}
+                </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,22 +30,30 @@
         </div>
     </div>
 </nav>
-<div
-    class="fixed border-l-4 border-gray-100 top-0 right-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
+<div class="fixed border-l-4 border-gray-100 top-0 right-0 z-40 w-72 h-screen p-4 overflow-y-auto transition-transform bg-white"
     [class.translate-x-full]="hideSidebar()">
     <div class="flex justify-between items-center">
         <p class="text-xl">My Cart</p>
-        <button (click)="toggleSidebar()">
+        <button (click)="toggleSidebar()" class="p-2 button-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
     </div>
-    <div>
+    <div class="pt-4 flex flex-col">
         @for (product of cart; track $index) {
-            <p>{{ product.title }}</p>
-            <p>{{ product.price }}</p>
+        <div class="p-1 flex justify-between items-center space-y-2">
+            <div class="flex items-center space-x-2">
+                <img [src]="product.image" class="w-12 h-12" [alt]="product.title" />
+                <h3>{{ product.title }}</h3>
+            </div>
+            <p class="text-sm text-gray-500 ">${{ product.price }}</p>
+        </div>
         }
+        <div class="flex justify-between pt-4 border-t">
+            <p>Total: </p>
+            <p class="font-bold">${{ total() }}</p>
+        </div>
     </div>
 </div>
