@@ -1,16 +1,18 @@
 import { Component, signal } from '@angular/core';
 import { Product } from '../../components/product/product';
 import { ProductModel } from '../../../shared/models/product.model';
+import { Header } from '../../../shared/components/header/header';
 
 @Component({
   selector: 'app-list',
-  imports: [Product],
+  imports: [Product, Header],
   templateUrl: './list.html',
   styleUrl: './list.css'
 })
 export class List {
 
   products = signal<ProductModel[]>([]);
+  cart = signal<ProductModel[]>([]);
 
   constructor() {
     const initialProducts: ProductModel[] = [
@@ -26,7 +28,7 @@ export class List {
     this.products.set(initialProducts);
   }
 
-  fromChild(event: string) {
-    console.log('Estamos en el padre y el hijo dice: ', event);
+  addToCart(product: ProductModel) {
+    this.cart.update(cart => [...cart, product]);
   }
 }

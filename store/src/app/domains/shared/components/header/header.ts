@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
+import { ProductModel } from '../../models/product.model';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,8 @@ import { Component, signal } from '@angular/core';
   styleUrl: './header.css'
 })
 export class Header {
+
+  @Input({ required: true }) cart: ProductModel[] = [];
 
   hideSidebar = signal(true);
 
