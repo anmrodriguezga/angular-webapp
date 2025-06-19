@@ -8,7 +8,7 @@
             <div class="grid grid-cols-3 gap-1">
                 @for(image of product()?.images; track $index) {
                 <img alt="ecommerce" class="object-cover object-center rounded border-2 border-gray-200"
-                    [src]="image" (click)="changeCoverImage(image)"/>
+                    [src]="image" (click)="changeCoverImage(image)" [class.opacity-50]="image !== coverImage()"/>
                 }
             </div>
         </div>
@@ -22,7 +22,7 @@
             {{ product()?.description }}
         </p>
         <p class="title-font font-medium text-2xl text-gray-900 mt-5">{{ product()?.price | currency }}</p>
-        <button class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+        <button class="flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" (click)="addToCart()">
             Add To Cart
         </button>
     </div>
