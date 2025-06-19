@@ -45,7 +45,7 @@
         @for (product of cart(); track $index) {
         <div class="p-1 flex justify-between items-center space-y-2">
             <div class="flex items-center space-x-2">
-                <img [src]="product.image" class="w-12 h-12" [alt]="product.title" />
+                <img [src]="product.images[0]" class="w-12 h-12" [alt]="product.title" />
                 <h3>{{ product.title }}</h3>
             </div>
             <p class="text-sm text-gray-500 ">${{ product.price }}</p>
