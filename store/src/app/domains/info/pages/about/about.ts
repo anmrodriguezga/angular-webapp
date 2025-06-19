@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { Counter } from '../../../shared/components/counter/counter';
+import { Counter } from '@shared/components/counter/counter';
+
 import { WaveAudio } from '../../components/wave-audio/wave-audio';
+import { HighlightDirective } from '@shared/directives/highlight';
 
 @Component({
   selector: 'app-about',
-  imports: [Counter, WaveAudio],
+  imports: [Counter, WaveAudio, HighlightDirective],
   templateUrl: './about.html',
   styleUrl: './about.css'
 })
