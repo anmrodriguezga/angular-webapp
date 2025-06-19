@@ -1,3 +1,5 @@
+import { CategoryModel } from "./category";
+
 export interface ProductModel {
     id: number;
     title: string;
@@ -5,4 +7,5 @@ export interface ProductModel {
     price: number;
     images: string[];
     creationAt: string;
+    category: CategoryModel
 }
