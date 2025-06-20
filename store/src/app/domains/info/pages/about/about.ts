@@ -10,7 +10,7 @@ import { HighlightDirective } from '@shared/directives/highlight';
   templateUrl: './about.html',
   styleUrl: './about.css'
 })
-export class About {
+export default class About {
   duration = signal(1000);
   message = signal('Hello World!');
 

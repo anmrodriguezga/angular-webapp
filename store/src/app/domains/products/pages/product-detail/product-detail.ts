@@ -10,7 +10,7 @@ import { ProductService } from '@shared/services/product';
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css'
 })
-export class ProductDetail {
+export default class ProductDetail {
 
   @Input({ required: true }) id?: number;
 

@@ -13,7 +13,7 @@ import { ProductService } from '@shared/services/product';
   templateUrl: './list.html',
   styleUrl: './list.css'
 })
-export class List {
+export default class List {
 
   private cartService = inject(CartService);
   private productService = inject(ProductService);
