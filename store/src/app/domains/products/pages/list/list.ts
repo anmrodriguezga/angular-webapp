@@ -1,4 +1,5 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, Input, SimpleChanges } from '@angular/core';
+import { RouterLinkWithHref } from '@angular/router';
 import { Product } from '@products/components/product/product';
 import { CategoryModel } from '@shared/models/category';
 import { ProductModel } from '@shared/models/product';
@@ -8,7 +9,7 @@ import { ProductService } from '@shared/services/product';
 
 @Component({
   selector: 'app-list',
-  imports: [Product],
+  imports: [Product, RouterLinkWithHref],
   templateUrl: './list.html',
   styleUrl: './list.css'
 })
@@ -18,12 +19,17 @@ export class List {
   private productService = inject(ProductService);
   private categoryService = inject(CategoryService);
 
+  @Input() category_id?: string;
+
   products = signal<ProductModel[]>([]);
   categories = signal<CategoryModel[]>([]);
 
   ngOnInit() {
-    this.getProducts();
     this.getCategories();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.getProducts();
   }
 
   addToCart(product: ProductModel) {
@@ -31,7 +37,7 @@ export class List {
   }
 
   private getProducts() {
-    this.productService.getProducts().subscribe({
+    this.productService.getProducts(this.category_id).subscribe({
       next: (products) => {
         this.products.set(products);
       },
