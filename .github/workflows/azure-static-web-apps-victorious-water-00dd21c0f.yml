@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'store/**'
-      - '.github/workflows/store-azureswa-pipeline.yml'
+      - '.github/workflows/azure-static-web-apps-victorious-water-00dd21c0f.yml'
 
 jobs:
   build_and_deploy_job:

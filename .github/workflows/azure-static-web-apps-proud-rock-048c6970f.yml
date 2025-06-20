@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - 'todoapp/**'
-      - '.github/workflows/todoapp-azureswa-pipeline.yml'
+      - '.github/workflows/azure-static-web-apps-proud-rock-048c6970f.yml'
 
 jobs:
   build_and_deploy_job:
