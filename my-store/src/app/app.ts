@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Products } from './components/products/products';
+import { Nav } from './components/nav/nav';
 
 @Component({
   selector: 'app-root',
-  imports: [Products, FormsModule, CommonModule],
+  imports: [Nav, Products, FormsModule, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
