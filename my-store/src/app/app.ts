@@ -10,4 +10,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class App {
   protected imgParent = 'https://www.w3schools.com/howto/img_avatar.png';
+
+  onLoaded(img: string) {
+    console.log('Load Padre:', img);
+  }
 }
