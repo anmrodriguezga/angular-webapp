@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -9,9 +9,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class Img {
 
-  @Input() img: string = 'valor init';
+  img: string = 'valor init';
+
+  @Input('img') 
+  set changeImg(newImg: string) {
+    this.img = newImg;
+    console.log('change just img:', this.img);
+  }
+  @Input() alt: string = '';
   @Output() loaded = new EventEmitter<string>();
   imageDefault: string = './assets/default-image.jpg';
+  counter = 0;
+  counterFn: number| undefined;
 
   constructor() {
     // before render
@@ -19,16 +28,21 @@ export class Img {
     console.log('Constructor', 'img:', this.img);
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     // before-during render
     // input changes - executed every update
     console.log('ngOnChanges', 'img:', this.img);
+    console.log('ngOnChanges', 'changes:', changes);
   }
 
   ngOnInit() {
     // before render
     // allow async -- executed once
     console.log('ngOnInit', 'img:', this.img);
+    this.counterFn = setInterval(() => {
+      this.counter++;
+      console.log('run counter');
+    }, 1000);
   }
 
   ngAfterViewInit() {
@@ -41,6 +55,7 @@ export class Img {
     // on delete
     // avoid async -- executed once
     console.log('ngOnDestroy', 'img:', this.img);
+    clearInterval(this.counterFn);
   }
 
   imgError() {

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   protected imgParent = '';
+  showImg = true;
   products: ProductModel[] = [
     {
       id: 1,
@@ -48,5 +49,9 @@ export class App {
 
   onLoaded(img: string) {
     console.log('Load Padre:', img);
+  }
+
+  toggleImg() {
+    this.showImg = !this.showImg;
   }
 }
