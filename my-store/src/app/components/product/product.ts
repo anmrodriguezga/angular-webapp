@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { ProductModel } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
+import { Img } from '../img/img';
 
 @Component({
   selector: 'app-product',
-  imports: [CommonModule],
+  imports: [Img, CommonModule],
   templateUrl: './product.html',
   styleUrl: './product.scss'
 })

@@ -19,8 +19,8 @@ export class Img {
   @Input() alt: string = '';
   @Output() loaded = new EventEmitter<string>();
   imageDefault: string = './assets/default-image.jpg';
-  counter = 0;
-  counterFn: number| undefined;
+  // counter = 0;
+  // counterFn: number| undefined;
 
   constructor() {
     // before render
@@ -39,10 +39,10 @@ export class Img {
     // before render
     // allow async -- executed once
     console.log('ngOnInit', 'img:', this.img);
-    this.counterFn = setInterval(() => {
-      this.counter++;
-      console.log('run counter');
-    }, 1000);
+    // this.counterFn = setInterval(() => {
+    //   this.counter++;
+    //   console.log('run counter');
+    // }, 1000);
   }
 
   ngAfterViewInit() {
@@ -55,7 +55,7 @@ export class Img {
     // on delete
     // avoid async -- executed once
     console.log('ngOnDestroy', 'img:', this.img);
-    clearInterval(this.counterFn);
+    // clearInterval(this.counterFn);
   }
 
   imgError() {
