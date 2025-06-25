@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 })
 export class Products {
 
+  total = 0;
+  myShoppingCart: ProductModel[] = [];
   products: ProductModel[] = [
     {
       id: 1,
@@ -43,5 +45,11 @@ export class Products {
       image: './assets/product.jpg'
     }
   ];
+
+  onAddToShoppingCart(product: ProductModel) {
+    this.myShoppingCart.push(product);
+    this.total = this.myShoppingCart.reduce((acc, item) => acc + item.price, 0);
+    console.log('total:', this.total);
+  }
 
 }
