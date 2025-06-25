@@ -18,6 +18,8 @@ export class Products {
   total = 0;
   myShoppingCart: ProductModel[] = [];
   products: ProductModel[] = [];
+  today = new Date();
+  date = new Date(2021, 1, 21);
 
   constructor(private storeService: StoreService) {
     this.myShoppingCart = this.storeService.getShoppingCart();
