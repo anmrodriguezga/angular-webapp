@@ -2,10 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProductModel } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { Img } from '../img/img';
+import { ReversePipe } from '../../pipes/reverse-pipe';
 
 @Component({
   selector: 'app-product',
-  imports: [Img, CommonModule],
+  imports: [Img, CommonModule, ReversePipe],
   templateUrl: './product.html',
   styleUrl: './product.scss'
 })

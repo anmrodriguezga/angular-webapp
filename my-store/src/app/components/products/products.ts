@@ -4,10 +4,11 @@ import { Product } from '../product/product';
 import { CommonModule } from '@angular/common';
 import { StoreService } from '../../services/store';
 import { ProductsService } from '../../services/products';
+import { TimeAgoPipe } from '../../pipes/time-ago-pipe';
 
 @Component({
   selector: 'app-products',
-  imports: [Product, CommonModule],
+  imports: [Product, TimeAgoPipe, CommonModule],
   templateUrl: './products.html',
   styleUrl: './products.scss'
 })
