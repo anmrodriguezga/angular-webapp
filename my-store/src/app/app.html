@@ -1,1 +1,4 @@
-<app-img></app-img>
+<p>
+    <input type="text" [(ngModel)]="imgParent" placeholder="Escribe algo para mostrarlo en la imagen">
+</p>
+<app-img [img]="imgParent"></app-img>
