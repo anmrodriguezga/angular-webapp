@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductModel } from '../../models/product.model';
 import { Product } from '../product/product';
 import { CommonModule } from '@angular/common';
@@ -12,9 +12,10 @@ import { TimeAgoPipe } from '../../pipes/time-ago-pipe';
   templateUrl: './products.html',
   styleUrl: './products.scss'
 })
-export class Products {
+export class Products implements OnInit {
 
   productsService = inject(ProductsService);
+  storeService = inject(StoreService);
 
   total = 0;
   myShoppingCart: ProductModel[] = [];
@@ -22,7 +23,7 @@ export class Products {
   today = new Date();
   date = new Date(2021, 1, 21);
 
-  constructor(private storeService: StoreService) {
+  constructor() {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
   

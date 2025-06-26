@@ -1,4 +1,4 @@
-<img [src]="img" (load)="imgLoaded()" (error)="imgError()" width="200" *ngIf="img; else elseImg" />
+<img [src]="img" (load)="imgLoaded()" (error)="imgError()" width="200" *ngIf="img; else elseImg" alt="" />
 <!-- <h3>{{ counter }}</h3> -->
 <ng-template #elseImg>
     <img [src]="imageDefault" alt="">

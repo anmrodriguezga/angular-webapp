@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -7,18 +7,19 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
   templateUrl: './img.html',
   styleUrl: './img.scss'
 })
-export class Img {
+export class Img implements OnChanges, OnInit, AfterViewInit, OnDestroy {
 
-  img: string = 'valor init';
+  img = 'valor init';
 
+  // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('img') 
   set changeImg(newImg: string) {
     this.img = newImg;
     console.log('change just img:', this.img);
   }
-  @Input() alt: string = '';
+  @Input() alt = '';
   @Output() loaded = new EventEmitter<string>();
-  imageDefault: string = './assets/default-image.jpg';
+  imageDefault = './assets/default-image.jpg';
   // counter = 0;
   // counterFn: number| undefined;
 

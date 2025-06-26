@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { StoreService } from '../../services/store';
 
 @Component({
@@ -7,7 +7,7 @@ import { StoreService } from '../../services/store';
   templateUrl: './nav.html',
   styleUrl: './nav.scss'
 })
-export class Nav {
+export class Nav implements OnInit {
 
   activeMenu = false;
   counter = 0;

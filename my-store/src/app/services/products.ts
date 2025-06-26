@@ -9,8 +9,6 @@ export class ProductsService {
 
   private http = inject(HttpClient)
 
-  constructor() { }
-
   getAllProducts() {
     return this.http.get<ProductModel[]>('https://fakestoreapi.com/products')
   }
