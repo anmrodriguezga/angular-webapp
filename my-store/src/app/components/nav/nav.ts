@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { StoreService } from '../../services/store';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +10,15 @@ import { Component } from '@angular/core';
 export class Nav {
 
   activeMenu = false;
+  counter = 0;
+
+  storeService = inject(StoreService);
+
+  ngOnInit() {
+    this.storeService.myCart$.subscribe((cart) => {
+      this.counter = cart.length;
+    });
+  }
 
   toggleMenu() {
     this.activeMenu = !this.activeMenu;
