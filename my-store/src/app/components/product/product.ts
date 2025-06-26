@@ -3,10 +3,11 @@ import { ProductModel } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
 import { Img } from '../img/img';
 import { ReversePipe } from '../../pipes/reverse-pipe';
+import { HighlightDirective } from '../../directives/highlight';
 
 @Component({
   selector: 'app-product',
-  imports: [Img, CommonModule, ReversePipe],
+  imports: [Img, CommonModule, ReversePipe, HighlightDirective],
   templateUrl: './product.html',
   styleUrl: './product.scss'
 })
