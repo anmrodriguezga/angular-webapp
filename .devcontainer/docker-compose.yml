@@ -1,16 +1,9 @@
 services:
-  devcontainer:
-    image: mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm
-    container_name: angular_devcontainer
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ..:/workspaces:cached
     ports:
       - "4200:4200"
-      - "49152:49152"
-    volumes:
-      - ..:/workspace:cached
-    command: >
-      sh -c "npm set strict-ssl false &&
-            npm i @angular/cli -g &&
-            cd /workspace/todoapp &&
-            npm ci &&
-            npm set strict-ssl true;
-            sleep infinity"

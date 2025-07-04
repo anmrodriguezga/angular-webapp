@@ -1,6 +1,6 @@
 {
     "name": "Angular 20",
     "dockerComposeFile": "docker-compose.yml",
-    "service": "devcontainer",
-    "workspaceFolder": "/workspace"
+    "service": "app",
+    "workspaceFolder": "/workspaces"
 }
