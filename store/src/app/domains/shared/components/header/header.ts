@@ -6,10 +6,9 @@ import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
   selector: 'app-header',
   imports: [RouterLinkWithHref, RouterLinkActive],
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
 })
 export class Header {
-
   private cartService = inject(CartService);
 
   hideSidebar = signal(true);
@@ -17,7 +16,6 @@ export class Header {
   total = this.cartService.total;
 
   toggleSidebar() {
-    this.hideSidebar.update(prevState => !prevState);
+    this.hideSidebar.update((prevState) => !prevState);
   }
-
 }

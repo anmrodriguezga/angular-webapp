@@ -1,4 +1,11 @@
-import { Component, signal, inject, Input, OnInit, OnChanges } from '@angular/core';
+import {
+  Component,
+  signal,
+  inject,
+  Input,
+  OnInit,
+  OnChanges,
+} from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { Product } from '@products/components/product/product';
 import { CategoryModel } from '@shared/models/category';
@@ -11,10 +18,9 @@ import { ProductService } from '@shared/services/product';
   selector: 'app-list',
   imports: [Product, RouterLinkWithHref],
   templateUrl: './list.html',
-  styleUrl: './list.css'
+  styleUrl: './list.css',
 })
 export default class List implements OnInit, OnChanges {
-
   private cartService = inject(CartService);
   private productService = inject(ProductService);
   private categoryService = inject(CategoryService);
@@ -43,7 +49,7 @@ export default class List implements OnInit, OnChanges {
       },
       error: (error) => {
         console.error('Error fetching products:', error);
-      }
+      },
     });
   }
 
@@ -54,8 +60,7 @@ export default class List implements OnInit, OnChanges {
       },
       error: (error) => {
         console.error('Error fetching categories:', error);
-      }
+      },
     });
   }
-
 }

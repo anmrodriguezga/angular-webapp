@@ -8,10 +8,9 @@ import { ProductService } from '@shared/services/product';
   selector: 'app-product-detail',
   imports: [CommonModule],
   templateUrl: './product-detail.html',
-  styleUrl: './product-detail.css'
+  styleUrl: './product-detail.css',
 })
 export default class ProductDetail implements OnInit {
-
   @Input({ required: true }) id?: number;
 
   private productService = inject(ProductService);
@@ -22,15 +21,14 @@ export default class ProductDetail implements OnInit {
 
   ngOnInit() {
     if (this.id) {
-      this.productService.getProductById(this.id!)
-        .subscribe({
-          next: (product) => {
-            this.product.set(product);
-            if (product.images.length > 0) {
-              this.coverImage.set(product.images[0]);
-            }
+      this.productService.getProductById(this.id!).subscribe({
+        next: (product) => {
+          this.product.set(product);
+          if (product.images.length > 0) {
+            this.coverImage.set(product.images[0]);
           }
-        });
+        },
+      });
     }
   }
 
@@ -44,5 +42,4 @@ export default class ProductDetail implements OnInit {
       this.cartService.addToCart(product);
     }
   }
-
 }

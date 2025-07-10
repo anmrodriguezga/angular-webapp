@@ -8,10 +8,10 @@ import { RouterLinkWithHref } from '@angular/router';
   selector: 'app-product',
   imports: [CommonModule, TimeAgoPipe, RouterLinkWithHref],
   templateUrl: './product.html',
-  styleUrl: './product.css'
+  styleUrl: './product.css',
 })
 export class Product {
-  @Input({required: true}) product!: ProductModel;
+  @Input({ required: true }) product!: ProductModel;
 
   @Output() addToCart = new EventEmitter();
 

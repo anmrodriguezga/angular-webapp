@@ -1,14 +1,23 @@
-import { Component, Input, signal, SimpleChanges, OnChanges, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  signal,
+  SimpleChanges,
+  OnChanges,
+  OnInit,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 
 @Component({
   selector: 'app-counter',
   imports: [],
   templateUrl: './counter.html',
-  styleUrl: './counter.css'
+  styleUrl: './counter.css',
 })
 export class Counter implements OnChanges, OnInit, AfterViewInit, OnDestroy {
-  @Input({required: true}) duration = 0;
-  @Input({required: true}) message = '';
+  @Input({ required: true }) duration = 0;
+  @Input({ required: true }) message = '';
   counter = signal(0);
   counterRef: number | undefined;
 
@@ -38,10 +47,10 @@ export class Counter implements OnChanges, OnInit, AfterViewInit, OnDestroy {
     console.log('duration: ', this.duration);
     console.log('message: ', this.message);
     console.log('-'.repeat(10));
-    
+
     this.counterRef = window.setInterval(() => {
       console.log('runInterval');
-      this.counter.update(value => value + 1);
+      this.counter.update((value) => value + 1);
     }, 1000);
   }
 
@@ -62,5 +71,4 @@ export class Counter implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   doSomething() {
     console.log('change duration');
   }
-
 }

@@ -8,7 +8,7 @@ import { HighlightDirective } from '@shared/directives/highlight';
   selector: 'app-about',
   imports: [Counter, WaveAudio, HighlightDirective],
   templateUrl: './about.html',
-  styleUrl: './about.css'
+  styleUrl: './about.css',
 })
 export default class About {
   duration = signal(1000);
