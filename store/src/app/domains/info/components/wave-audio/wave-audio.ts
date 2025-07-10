@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, signal, ViewChild, AfterViewInit } from '@angular/core';
 
 import WaveSurfer from 'wavesurfer.js'
 
@@ -8,7 +8,7 @@ import WaveSurfer from 'wavesurfer.js'
   templateUrl: './wave-audio.html',
   styleUrl: './wave-audio.css'
 })
-export class WaveAudio {
+export class WaveAudio implements AfterViewInit {
   
   @Input({required: true}) audioUrl!: string;
   @ViewChild('wave') waveContainer!: ElementRef;

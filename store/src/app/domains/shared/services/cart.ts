@@ -11,8 +11,6 @@ export class CartService {
     return this.cart().reduce((total, product) => total + product.price, 0);
   });
 
-  constructor() { }
-
   addToCart(product: ProductModel) {
     this.cart.update(currentCart => [...currentCart, product]);
   }

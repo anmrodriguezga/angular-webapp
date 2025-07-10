@@ -1,4 +1,4 @@
-import { Component, signal, inject, Input, SimpleChanges } from '@angular/core';
+import { Component, signal, inject, Input, OnInit, OnChanges } from '@angular/core';
 import { RouterLinkWithHref } from '@angular/router';
 import { Product } from '@products/components/product/product';
 import { CategoryModel } from '@shared/models/category';
@@ -13,7 +13,7 @@ import { ProductService } from '@shared/services/product';
   templateUrl: './list.html',
   styleUrl: './list.css'
 })
-export default class List {
+export default class List implements OnInit, OnChanges {
 
   private cartService = inject(CartService);
   private productService = inject(ProductService);
@@ -28,7 +28,7 @@ export default class List {
     this.getCategories();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.getProducts();
   }
 

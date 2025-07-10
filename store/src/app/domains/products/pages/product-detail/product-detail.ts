@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input, signal, OnInit } from '@angular/core';
 import { ProductModel } from '@shared/models/product';
 import { CartService } from '@shared/services/cart';
 import { ProductService } from '@shared/services/product';
@@ -10,7 +10,7 @@ import { ProductService } from '@shared/services/product';
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.css'
 })
-export default class ProductDetail {
+export default class ProductDetail implements OnInit {
 
   @Input({ required: true }) id?: number;
 

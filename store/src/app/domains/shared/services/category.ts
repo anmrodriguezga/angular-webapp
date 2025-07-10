@@ -9,8 +9,6 @@ export class CategoryService {
 
   private http = inject(HttpClient);
 
-  constructor() { }
-
   getCategories() {
     return this.http.get<CategoryModel[]>('https://api.escuelajs.co/api/v1/categories');
   }

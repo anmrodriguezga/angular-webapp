@@ -1,4 +1,4 @@
-import { Component, Input, signal, SimpleChanges } from '@angular/core';
+import { Component, Input, signal, SimpleChanges, OnChanges, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -6,9 +6,9 @@ import { Component, Input, signal, SimpleChanges } from '@angular/core';
   templateUrl: './counter.html',
   styleUrl: './counter.css'
 })
-export class Counter {
-  @Input({required: true}) duration: number = 0;
-  @Input({required: true}) message: string = '';
+export class Counter implements OnChanges, OnInit, AfterViewInit, OnDestroy {
+  @Input({required: true}) duration = 0;
+  @Input({required: true}) message = '';
   counter = signal(0);
   counterRef: number | undefined;
 
